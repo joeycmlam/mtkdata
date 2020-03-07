@@ -23,8 +23,10 @@ if __name__ == '__main__':
 
     pprint.pprint(values)
 
-    price_list = value['Close'].tolist()
+    price_list = values.tolist()
 
-    pprint.pprint(price_list)
+    closePrice = price_list[0]
+
+    pprint.pprint('price={0}'.format(closePrice))
 
 
