@@ -14,8 +14,9 @@ class api_root(Resource):
 
 class api_getStockPrice(Resource):
     def get(self, stockcode):
-        price = mktdata.getTodayPrice(stockcode)
-        return {'price': price}
+        #ticker = mktdata.getCurrentStockInfo(stockcode)
+        ticker = mktdata.getTodayPrice(stockcode)
+        return ticker
 
 api.add_resource(api_root, '/')
 api.add_resource(api_getStockPrice, '/get_price/<string:stockcode>')

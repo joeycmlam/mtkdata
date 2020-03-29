@@ -15,14 +15,23 @@ def getTodayPrice(stockCode):
 
     return price
 
-def getPrice(stockCode, fromDate, toDate):
-    closingPrice = 0
+def getCurrentStockInfo(stockCode):
+    latestDate = date.today().strftime("%Y-%m-%d")
+    values = getStockInfo(stockCode, latestDate, latestDate)
+    return values
 
+def getStockInfo(stockCode, fromDate, toDate):
     listStockCodes = "PFF " + stockCode
     data = yf.download(listStockCodes, start=fromDate, end=toDate, group_by="ticker")
 
     values = data[stockCode]['Close']
 
+    return values
+
+def getPrice(stockCode, fromDate, toDate):
+    closingPrice = 0
+
+    values = getStockInfo(stockCode, fromDate, toDate)
     #pprint.pprint(values)
 
     price_list = values.tolist()

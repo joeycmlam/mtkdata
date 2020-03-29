@@ -20,6 +20,9 @@ if __name__ == '__main__':
 
     pprint.pprint("price {0} = {1}".format(stockCode, price))
 
+    ticker = mktdata.getCurrentStockInfo(stockCode)
+
+    pprint.pprint(ticker)
     #clear object
     #del objMk
 
