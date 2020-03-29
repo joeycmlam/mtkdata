@@ -1,0 +1,12 @@
+FROM python:3
+
+
+COPY . /src
+
+RUN make /src
+
+RUN pip install pprint
+
+RUN pip install yfinance
+
+CMD [ "python", "./src/main.py" ]
