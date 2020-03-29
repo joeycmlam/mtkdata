@@ -1,11 +1,18 @@
-FROM python:alpine3.7
+FROM python:3
 
 COPY . /src
 
-WORKDIR /app
+WORKDIR /src
 
-RUN pip install -r requirements.txt
 
-EXPOSE 5000
+RUN pip install pprint
 
-CMD python3 ./index.py
+RUN pip install yfinance
+
+RUN pip install flask
+RUN pip install Flask_restful
+RUN pip install flask_cors
+
+
+
+CMD [ "python", "./src/restcontrol.py" ]

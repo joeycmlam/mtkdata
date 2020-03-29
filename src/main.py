@@ -16,6 +16,9 @@ if __name__ == '__main__':
 
     stockCode = 'C-PN'
 
+    pprint.pprint("stock {0} ".format(stockCode))
+
+
     price = mktdata.getTodayPrice(stockCode)
 
     pprint.pprint("price {0} = {1}".format(stockCode, price))
