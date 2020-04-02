@@ -12,6 +12,10 @@ class api_root(Resource):
         print('hello world!')
         return {'src': 'version 0.0.1'}
 
+class api_healthcheck(Resource):
+    def get(self):
+        return {'src': 'testing'}
+
 class api_getStockPrice(Resource):
     def get(self, stockcode):
         #ticker = src.getCurrentStockInfo(stockcode)
@@ -19,6 +23,7 @@ class api_getStockPrice(Resource):
         return ticker
 
 api.add_resource(api_root, '/')
+api.add_resource(api_healthcheck, '/test')
 api.add_resource(api_getStockPrice, '/get_price/<string:stockcode>')
 
 
