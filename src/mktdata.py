@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 def getTodayPrice(stockCode):
     latestDate = datetime.now().strftime("%Y-%m-%d")
-    fromDate = datetime.strftime(datetime.now() - timedelta(1), '%Y-%m-%d')
+    fromDate = datetime.strftime(datetime.now() - timedelta(2), '%Y-%m-%d')
     price = getPrice(stockCode, fromDate, latestDate)
 
 
@@ -47,6 +47,6 @@ def getPrice(stockCode, fromDate, toDate):
     if price_list == []:
         pprint.pprint("price_list[] is empty")
     else:
-        closingPrice = price_list[0]
+        closingPrice = price_list[len(price_list)-1]
 
     return closingPrice
