@@ -6,8 +6,8 @@ to write your content.
 
 Name: mktdata
 
-Build Command: docker build -t mktdata:latest
+Build Command: docker build -t mysys.mktdata:0.1
 
-Start Command: docker run -d -p 5000:5000 -t mtkdata
+Start Command: docker run -d -p 5000:5000 -t mysys.mktdata:0.1
 
 
