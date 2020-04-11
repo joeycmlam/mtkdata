@@ -11,12 +11,24 @@ from datetime import datetime, timedelta
 
 
 def getTodayPrice(stockCode):
+    closingPrice = 0
+
     latestDate = datetime.now().strftime("%Y-%m-%d")
     fromDate = datetime.strftime(datetime.now() - timedelta(2), '%Y-%m-%d')
-    price = getPrice(stockCode, fromDate, latestDate)
+
+    result = getStockInfo(stockCode, fromDate, latestDate)
+
+    price_list = result['Close']
+
+    num_record = len(price_list)
+    if num_record == 0:
+        pprint.pprint("price_list[] is empty")
+    else:
+        closingPrice = price_list[num_record-1]
+
+    return closingPrice
 
 
-    return price
 
 def getCurrentStockInfo(stockCode):
     latestDate = datetime.now().strftime("%Y-%m-%d")
@@ -31,9 +43,9 @@ def getStockInfo(stockCode, fromDate, toDate):
     data = yf.download(listStockCodes, start=fromDate, end=toDate, group_by="ticker")
 
     pprint.pprint("getStockInfo: data {0}".format(data))
-    values = data[stockCode]['Close']
+    #values = data[stockCode]['Close']
 
-    return values
+    return data[stockCode]
 
 def getPrice(stockCode, fromDate, toDate):
     closingPrice = 0
@@ -42,7 +54,7 @@ def getPrice(stockCode, fromDate, toDate):
     values = getStockInfo(stockCode, fromDate, toDate)
     pprint.pprint(values)
 
-    price_list = values.tolist()
+    price_list = values
 
     if price_list == []:
         pprint.pprint("price_list[] is empty")
@@ -50,3 +62,18 @@ def getPrice(stockCode, fromDate, toDate):
         closingPrice = price_list[len(price_list)-1]
 
     return closingPrice
+
+
+def getPriceInfo(stockCode, fromDate, toDate):
+    closingPrice = 0
+
+
+    values = getStockInfo(stockCode, fromDate, toDate)
+    pprint.pprint(values)
+
+    #price_list = values.tolist()
+
+    result = values['Close'].tolist()
+    return result
+
+
