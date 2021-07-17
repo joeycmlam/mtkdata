@@ -49,3 +49,12 @@ Repeat similar the above similar steps on EC2 in order to pull the docker image
 
 5. run the process
 	docker run  -d -p 80:80 -t 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:0.4
+	
+	
+	
+POST-RELEASE check
+
+curl http://ec2-34-215-1-128.us-west-2.compute.amazonaws.com:80/
+
+
+curl http://ec2-34-215-1-128.us-west-2.compute.amazonaws.com/get_price/C
