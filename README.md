@@ -20,35 +20,36 @@ https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html
 	secret key: 
 
 2. login aws ecr
-	> aws ecr get-login --region us-west-2
+> aws ecr get-login --region us-west-2
     And then copy the output --> docker login -u AWS -p .... and removing -e none
-                  
+   
+> aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 122621547060.dkr.ecr.us-west-2.amazonaws.com/mysys-repo
 
 
 step 3: create a repositorys
-        aws ecr create-repository \
+        sudo aws ecr create-repository \
             --repository-name repo-mysys \
             --image-scanning-configuration scanOnPush=true \
-            --region us-east-1
+            --region us-west-2
             
 
 3. tag image
-	> docker tag mysys.mktdata:0.4 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:0.4
+	> docker tag mysys.mktdata:0.5 122621547060.dkr.ecr.us-west-2.amazonaws.com/mysys-repo:0.5
            
          
          
 4. push image
-	> docker push 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:latest
+> docker push 122621547060.dkr.ecr.us-west-2.amazonaws.com/mysys-repo:0.5
 
 
 Repeat similar the above similar steps on EC2 in order to pull the docker image
 
 
 5. pull on EC2 machine
-	> docker pull 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:0.4
+> docker pull 122621547060.dkr.ecr.us-west-2.amazonaws.com/mysys-repo:0.5
 
 5. run the process
-	docker run  -d -p 80:80 -t 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:0.4
+> docker run  -d -p 80:80 -t 122621547060.dkr.ecr.us-west-2.amazonaws.com/repo-mysys:0.5
 	
 	
 	

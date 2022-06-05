@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mktdata_pkg",
-    version="0.0.3",
+    version="0.0.4",
     author="jlam",
     author_email="joey.cm.lam@gmail.com",
     description="A small example package",
