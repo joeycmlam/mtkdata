@@ -5,7 +5,7 @@ COPY . /src
 WORKDIR /src
 
 
-RUN pip install pprint
+#RUN pip install pprint
 
 RUN pip install yfinance
 

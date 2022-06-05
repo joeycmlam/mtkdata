@@ -1,9 +1,9 @@
 import pprint
-
 import yfinance as yf
 from datetime import datetime, timedelta
 import json
-
+import logging
+import numpy
 
 def getTodayPrice(stockCode):
     closingPrice = 0
@@ -15,10 +15,14 @@ def getTodayPrice(stockCode):
 
     num_record = len(result)
     if num_record == 0:
-        pprint.pprint("result[] is empty")
+        logging.info("result[] is empty")
     else:
-        closingPrice = result[num_record-1]
+        if numpy.isnan(result[num_record-1]):
+            closingPrice = result[num_record - 2]
+        else:
+            closingPrice = result[num_record - 1]
 
+    logging.info("last closing price: [{price}]".format(price=closingPrice))
     return closingPrice
 
 
@@ -26,10 +30,12 @@ def getTodayPrice(stockCode):
 def getStockInfo(stockCode, fromDate, toDate):
     listStockCodes = "T " + stockCode
 
-    pprint.pprint("getStockInfo: stockcode = {0} {1} {2}".format(listStockCodes, fromDate, toDate))
+    # pprint.pprint("getStockInfo: stockcode = {0} {1} {2}".format(listStockCodes, fromDate, toDate))
+    logging.info("getStockInfo: stockcode = {0} {1} {2}".format(listStockCodes, fromDate, toDate))
     data = yf.download(listStockCodes, start=fromDate, end=toDate, group_by="ticker")
 
-    pprint.pprint("getStockInfo: data {0}".format(data))
+    # pprint.pprint("getStockInfo: data {0}".format(data))
+    logging.info("getStockInfo: data {0}".format(data))
 
     return data[stockCode]
 
@@ -42,6 +48,7 @@ def getTodayStockInfo(stockCode):
     result = getStockInfo(stockCode, fromDate, latestDate)
 
     num_record = len(result)
+    rtnValue = []
     if num_record == 0:
         pprint.pprint("result[] is empty")
     else:

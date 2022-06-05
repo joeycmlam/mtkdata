@@ -1,30 +1,20 @@
 import pprint
-import importlib, importlib.util
 import mktdata
-
-
-
-
-def module_from_file(module_name: object, file_path: object) -> object:
-    spec = importlib.util.spec_from_file_location(module_name, file_path)
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
+import logging
 
 
 if __name__ == '__main__':
 
-    stockCode = 'C-PN'
+    stockCode = '2800.HK'
 
-    pprint.pprint("stock {0} ".format(stockCode))
+    logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+                        datefmt='%Y-%m-%d:%H:%M:%S',
+                        level=logging.INFO)
 
+    logging.info("stock {0} ".format(stockCode))
 
     price = mktdata.getTodayPrice(stockCode)
 
-    pprint.pprint("price {0} = {1}".format(stockCode, price))
+    logging.info("price {0} = {1}".format(stockCode, price))
 
-    #ticker = mktdata.getCurrentStockInfo(stockCode)
-    #pprint.pprint(ticker)
-    #clear object
-    #del objMk
 

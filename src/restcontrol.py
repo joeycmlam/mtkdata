@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from flask_cors import CORS
+import logging
 import mktdata
 
 app = Flask(__name__)
@@ -18,7 +19,6 @@ class api_healthcheck(Resource):
 
 class api_getStockPrice(Resource):
     def get(self, stockcode):
-        #ticker = src.getCurrentStockInfo(stockcode)
         ticker = mktdata.getTodayPrice(stockcode)
         return ticker
 
@@ -28,5 +28,8 @@ api.add_resource(api_getStockPrice, '/get_price/<string:stockcode>')
 
 
 if __name__ == '__main__':
+    logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+                        datefmt='%Y-%m-%d:%H:%M:%S',
+                        level=logging.INFO)
     app.run(host="0.0.0.0", port=int("80"), debug=True)
 
