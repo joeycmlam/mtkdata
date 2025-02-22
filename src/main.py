@@ -3,6 +3,8 @@ import mktdata
 import logging
 
 
+
+
 if __name__ == '__main__':
 
     stockCode = 'C-PN'
@@ -14,6 +16,7 @@ if __name__ == '__main__':
     logging.info("stock {0} ".format(stockCode))
 
     price = mktdata.getTodayPrice(stockCode)
+
 
     logging.info("price {0} = {1}".format(stockCode, price))
 

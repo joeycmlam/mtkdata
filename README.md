@@ -45,7 +45,7 @@ step 3: create a repositorys
 Repeat similar the above similar steps on EC2 in order to pull the docker image
 
 
-5. pull on EC2 machine
+5. login EC2 and then login ecr docker pull on EC2 machine
 > docker pull 122621547060.dkr.ecr.us-west-2.amazonaws.com/mysys-repo:0.5
 
 5. run the process
@@ -55,7 +55,8 @@ Repeat similar the above similar steps on EC2 in order to pull the docker image
 	
 POST-RELEASE check
 
-curl http://ec2-34-215-1-128.us-west-2.compute.amazonaws.com:80/
+curl http://ec2-52-12-203-177.us-west-2.compute.amazonaws.com:80/
 
 
-curl http://ec2-34-215-1-128.us-west-2.compute.amazonaws.com/get_price/C
+
+curl http://ec2-52-12-203-177.us-west-2.compute.amazonaws.com:80/get_price/C
