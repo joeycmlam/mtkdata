@@ -11,7 +11,7 @@ api = Api(app)
 class api_root(Resource):
     def get(self):
         print('hello world!')
-        return {'src': 'version 0.0.1'}
+        return {'src': 'version 1.0.1'}
 
 class api_healthcheck(Resource):
     def get(self):
