@@ -6,7 +6,7 @@ to write your content.
 
 Name: mktdata
 
-Build Command: docker build -t mysys.mktdata:0.4 .
+Build Command: docker build -t mysys.mktdata:1.0 .
 
 Start Command: docker run -d -p 5000:5000 -t mysys.mktdata:0.1
 
