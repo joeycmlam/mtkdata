@@ -31,5 +31,5 @@ if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
                         datefmt='%Y-%m-%d:%H:%M:%S',
                         level=logging.INFO)
-    app.run(host="127.0.0.1", port=8080, debug=True, use_reloader=False)
+    app.run(host="0.0.0.0", port=80, debug=True, use_reloader=False)
 
