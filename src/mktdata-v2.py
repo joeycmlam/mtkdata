@@ -13,7 +13,7 @@ class StockPriceGetter:
             end_date = datetime.now().strftime("%Y-%m-%d")
             start_date = (datetime.now() - timedelta(days=5)).strftime("%Y-%m-%d")
 
-            data = yf.download(stock_code, start=start_date, end=end_date)
+            data = yf.download(stock_code, start=start_date, end=end_date, progress=False)
 
             if data.empty:
                 self.logger.info(f"No data available for {stock_code}")

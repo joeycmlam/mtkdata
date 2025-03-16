@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from flask_cors import CORS
 import logging
-import mktdata
+import mktdata_alpha
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -17,19 +17,19 @@ class api_healthcheck(Resource):
     def get(self):
         return {'src': 'testing'}
 
-class api_getStockPrice(Resource):
+class apigetStockPrice(Resource):
     def get(self, stockcode):
-        ticker = mktdata.getTodayPrice(stockcode)
+        ticker = mktdata_alpha.getTodayPrice(stockcode)
         return ticker
 
 api.add_resource(api_root, '/')
 api.add_resource(api_healthcheck, '/test')
-api.add_resource(api_getStockPrice, '/get_price/<string:stockcode>')
+api.add_resource(apigetStockPrice, '/get_price/<string:stockcode>')
 
 
 if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
                         datefmt='%Y-%m-%d:%H:%M:%S',
                         level=logging.INFO)
-    app.run(host="0.0.0.0", port=int("80"), debug=True)
+    app.run(host="127.0.0.1", port=8080, debug=True, use_reloader=False)
 
