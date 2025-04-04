@@ -62,7 +62,21 @@
       <recent name="$PROJECT_DIR$/mktdata" />
     </key>
   </component>
-  <component name="RunManager" selected="Behave.stock_price.feature:Handle empty stock symbol">
+  <component name="RunManager" selected="Behave.stock_price.feature">
+    <configuration name="stock_price.feature" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
+      <module name="mktdata" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/stock_price.feature" />
+      <option name="ADDITIONAL_ARGS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="stock_price.feature:Handle empty stock symbol" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
       <module name="mktdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -123,21 +137,6 @@
       <option name="ADDITIONAL_ARGS" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="stock_price.feature:Successfully get stock price" type="PyBehaveRunConfigurationType" factoryName="Behave" temporary="true">
-      <module name="mktdata" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <WHAT_TO_RUN WHAT_TO_RUN="$PROJECT_DIR$/tests/features/stock_price.feature" />
-      <SCENRAIO_NAMES SCENRAIO_NAMES="Successfully get stock price" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="mktdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -165,15 +164,15 @@
       <item itemvalue="Behave.stock_price.feature:Handle invalid stock symbol" />
       <item itemvalue="Behave.stock_price.feature:Successfully get AAPL stock price" />
       <item itemvalue="Behave.stock_price.feature:Successfully get C stock price" />
-      <item itemvalue="Behave.stock_price.feature:Successfully get stock price" />
+      <item itemvalue="Behave.stock_price.feature" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Behave.stock_price.feature" />
         <item itemvalue="Behave.stock_price.feature:Handle empty stock symbol" />
         <item itemvalue="Behave.stock_price.feature:Handle invalid stock symbol" />
         <item itemvalue="Behave.stock_price.feature:Successfully get C stock price" />
         <item itemvalue="Behave.stock_price.feature:Successfully get AAPL stock price" />
-        <item itemvalue="Behave.stock_price.feature:Successfully get stock price" />
       </list>
     </recent_temporary>
   </component>
@@ -206,7 +205,7 @@
       <workItem from="1743688092205" duration="112000" />
       <workItem from="1743741723672" duration="597000" />
       <workItem from="1743763839980" duration="924000" />
-      <workItem from="1743764776644" duration="2253000" />
+      <workItem from="1743764776644" duration="2293000" />
     </task>
     <task id="LOCAL-00001" summary="extract closing price">
       <created>1583591392614</created>
@@ -334,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1743768502458</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="reformat the file">
+      <created>1743768532457</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1743768532457</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,7 +361,8 @@
     <MESSAGE value="updated." />
     <MESSAGE value="update" />
     <MESSAGE value="test reflector" />
-    <option name="LAST_COMMIT_MESSAGE" value="test reflector" />
+    <MESSAGE value="reformat the file" />
+    <option name="LAST_COMMIT_MESSAGE" value="reformat the file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
