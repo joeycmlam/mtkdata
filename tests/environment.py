@@ -1,5 +1,4 @@
 from behave import fixture, use_fixture
-from src.mktdata_finnhub import FinnhubAPI
 from tests.mocks.mock_finnhub import MockFinnhubAPI
 
 @fixture

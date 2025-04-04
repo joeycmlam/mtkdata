@@ -6,7 +6,7 @@ class MockFinnhubAPI(StockPriceFetcher):
     
     def __init__(self):
         self.mock_prices: Dict[str, float] = {
-            'AAPL': 150.0,
+            'AAPL': 150,
             'GOOGL': 2800.0,
             'MSFT': 300.0
         }
