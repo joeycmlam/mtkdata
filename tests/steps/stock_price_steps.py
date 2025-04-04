@@ -37,7 +37,3 @@ def step_then_receive_specific_price(context, expected_price):
     # assert isinstance(context.stock_price.price, float), "Price should be a float"
     assert context.stock_price.price == expected_price, f"Expected price {expected_price}, got {context.stock_price.price}"
 
-
-# @then('I should receive no price value')
-# def step_then_receive_no_price(context):
-#     assert context.stock_price.price == 0, f"Expected no price value, but got {context.stock_price.price}"
