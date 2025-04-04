@@ -1,81 +1,106 @@
 import requests
 import logging
 from datetime import datetime
+from typing import Optional, Dict, Any
 from config_reader import ConfigReader
 
+class StockPriceResponse:
+    """Data class for stock price response."""
+    
+    def __init__(self, symbol: str, price: float, change: float, 
+                 percent_change: float, timestamp: str):
+        self.symbol = symbol
+        self.price = price
+        self.change = change
+        self.percent_change = percent_change
+        self.timestamp = timestamp
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert the response to a dictionary."""
+        return {
+            'symbol': self.symbol,
+            'price': self.price,
+            'change': self.change,
+            'percent_change': self.percent_change,
+            'timestamp': self.timestamp
+        }
+
 class FinnhubAPI:
-    def __init__(self, config_reader=None):
+    """Client for interacting with the Finnhub API."""
+    
+    def __init__(self, config_reader: Optional[ConfigReader] = None):
         self.config_reader = config_reader or ConfigReader()
         self.api_key = self.config_reader.get_api_key('FINNHUB')
-        self.base_url = 'https://finnhub.io/api/v1'
+        self.base_url = self.config_reader.get_base_url('FINNHUB')
         self.logger = logging.getLogger(__name__)
 
-    def get_stock_price(self, symbol):
+    def _build_endpoint(self, path: str) -> str:
+        """Build the full API endpoint URL."""
+        return f"{self.base_url}/{path}"
+
+    def _make_request(self, endpoint: str, params: Dict[str, str]) -> Optional[Dict[str, Any]]:
+        """Make an HTTP request to the API."""
+        try:
+            response = requests.get(endpoint, params=params)
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            self.logger.error(f"API request failed: {str(e)}")
+            return None
+
+    def _parse_response(self, symbol: str, data: Dict[str, Any]) -> Optional[StockPriceResponse]:
+        """Parse the API response into a StockPriceResponse object."""
+        if not data or 'c' not in data:
+            self.logger.error(f"Invalid response data for symbol {symbol}")
+            return None
+
+        return StockPriceResponse(
+            symbol=symbol,
+            price=data['c'],
+            change=data['d'],
+            percent_change=data['dp'],
+            timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        )
+
+    def get_stock_price(self, symbol: str) -> Optional[Dict[str, Any]]:
         """
-        Fetch real-time stock price using Finnhub API
+        Fetch real-time stock price using Finnhub API.
         
         Args:
-            symbol (str): Stock symbol (e.g., 'AAPL' for Apple)
+            symbol: Stock symbol (e.g., 'AAPL' for Apple)
             
         Returns:
-            dict: Stock price information including current price and change
+            Stock price information or None if error
         """
-        try:
-            # Endpoint for real-time quote
-            endpoint = f"{self.base_url}/quote"
-            
-            # Parameters for the API call
-            params = {
-                'symbol': symbol,
-                'token': self.api_key
-            }
-            
-            # Make the API request
-            response = requests.get(endpoint, params=params)
-            
-            # Check if request was successful
-            if response.status_code == 200:
-                data = response.json()
-                
-                # Check if we got valid data
-                if data and 'c' in data:
-                    return {
-                        'symbol': symbol,
-                        'price': data['c'],
-                        'change': data['d'],
-                        'percent_change': data['dp'],
-                        'timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    }
-                else:
-                    self.logger.error(f"No data available for symbol {symbol}")
-                    return None
-            else:
-                self.logger.error(f"API returned status code {response.status_code}")
-                return None
-                
-        except requests.exceptions.RequestException as e:
-            self.logger.error(f"Error fetching data: {str(e)}")
+        endpoint = self._build_endpoint('quote')
+        params = {
+            'symbol': symbol,
+            'token': self.api_key
+        }
+        
+        data = self._make_request(endpoint, params)
+        if not data:
             return None
-        except Exception as e:
-            self.logger.error(f"Unexpected error: {str(e)}")
-            return None
+            
+        response = self._parse_response(symbol, data)
+        return response.to_dict() if response else None
 
 # Create a singleton instance
 finnhub_api = FinnhubAPI()
 
-def getTodayPrice(symbol):
+def getTodayPrice(symbol: str) -> Optional[Dict[str, Any]]:
     """
-    Get today's stock price for the given symbol
+    Get today's stock price for the given symbol.
     
     Args:
-        symbol (str): Stock symbol
+        symbol: Stock symbol
         
     Returns:
-        dict: Stock price information or None if error
+        Stock price information or None if error
     """
     return finnhub_api.get_stock_price(symbol)
 
 if __name__ == '__main__':
     symbol = 'AAPL'
-    result = getTodayPrice(symbol) 
+    result = getTodayPrice(symbol)
     print(result)
