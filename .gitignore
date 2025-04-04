@@ -44,3 +44,7 @@ dist/
 
 # Ignore Windows system files
 Thumbs.db
+
+# Ignore config files
+src/config.ini
+src/config.json

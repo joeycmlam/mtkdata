@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f937f7f-d6ae-4d35-b641-1728d48915dc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/mktdata_ib.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +62,7 @@
       <recent name="$PROJECT_DIR$/mktdata" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mktdata_ib">
+  <component name="RunManager" selected="Python.restcontrol">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="mktdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -134,6 +133,9 @@
       <module name="mktdata" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -199,8 +201,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mktdata_ib" />
         <item itemvalue="Python.restcontrol" />
+        <item itemvalue="Python.mktdata_ib" />
         <item itemvalue="Python.mktdata_alpha" />
         <item itemvalue="Python.mktdata.v3" />
         <item itemvalue="Python.mktdata-v2" />
@@ -231,6 +233,9 @@
       <workItem from="1742092151601" duration="2941000" />
       <workItem from="1742095968995" duration="3894000" />
       <workItem from="1742107819587" duration="3579000" />
+      <workItem from="1742563105326" duration="177000" />
+      <workItem from="1743255978011" duration="733000" />
+      <workItem from="1743688092205" duration="112000" />
     </task>
     <task id="LOCAL-00001" summary="extract closing price">
       <created>1583591392614</created>
