@@ -63,7 +63,7 @@ class FinnhubAPI:
             timestamp=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         )
 
-    def get_stock_price(self, symbol: str) -> Optional[Dict[str, Any]]:
+    def get_stock_price(self, symbol: str) -> Optional[float]:
         """
         Fetch real-time stock price using Finnhub API.
         
@@ -71,7 +71,7 @@ class FinnhubAPI:
             symbol: Stock symbol (e.g., 'AAPL' for Apple)
             
         Returns:
-            Stock price information or None if error
+            Current stock price or None if error
         """
         endpoint = self._build_endpoint('quote')
         params = {
@@ -80,11 +80,10 @@ class FinnhubAPI:
         }
         
         data = self._make_request(endpoint, params)
-        if not data:
+        if not data or 'c' not in data:
             return None
             
-        response = self._parse_response(symbol, data)
-        return response.to_dict() if response else None
+        return data['c']
 
 
 
