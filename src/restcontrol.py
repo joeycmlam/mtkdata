@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 from flask_cors import CORS
 import logging
-import mktdata_finnhub
+from mktdata_finnhub import get_stock_price
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -19,8 +19,8 @@ class api_healthcheck(Resource):
 
 class apigetStockPrice(Resource):
     def get(self, stockcode):
-        ticker = mktdata_finnhub.getTodayPrice(stockcode)
-        return ticker
+        ticker = get_stock_price(stockcode)
+        return ticker if ticker else {'error': f'Could not fetch price for {stockcode}'}
 
 api.add_resource(api_root, '/')
 api.add_resource(api_healthcheck, '/test')
