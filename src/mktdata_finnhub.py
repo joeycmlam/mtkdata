@@ -27,11 +27,12 @@ class StockPriceResponse:
 
 class FinnhubAPI:
     """Client for interacting with the Finnhub API."""
+    section_name: str = 'FINNHUB'
     
     def __init__(self, config_reader: Optional[ConfigReader] = None):
         self.config_reader = config_reader or ConfigReader()
-        self.api_key = self.config_reader.get_api_key('FINNHUB')
-        self.base_url = self.config_reader.get_base_url('FINNHUB')
+        self.api_key = self.config_reader.get_api_key(self.section_name)
+        self.base_url = self.config_reader.get_base_url(self.section_name)
         self.logger = logging.getLogger(__name__)
 
     def _build_endpoint(self, path: str) -> str:
@@ -85,8 +86,7 @@ class FinnhubAPI:
         response = self._parse_response(symbol, data)
         return response.to_dict() if response else None
 
-# Create a singleton instance
-finnhub_api = FinnhubAPI()
+
 
 def getTodayPrice(symbol: str) -> Optional[Dict[str, Any]]:
     """
@@ -98,6 +98,8 @@ def getTodayPrice(symbol: str) -> Optional[Dict[str, Any]]:
     Returns:
         Stock price information or None if error
     """
+    # Create a singleton instance
+    finnhub_api = FinnhubAPI()
     return finnhub_api.get_stock_price(symbol)
 
 if __name__ == '__main__':
