@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f937f7f-d6ae-4d35-b641-1728d48915dc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/restcontrol.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/restcontrol.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -226,7 +228,7 @@
       <workItem from="1743764776644" duration="2397000" />
       <workItem from="1743909901498" duration="989000" />
       <workItem from="1743924204049" duration="1239000" />
-      <workItem from="1743925730422" duration="2573000" />
+      <workItem from="1743925730422" duration="3260000" />
     </task>
     <task id="LOCAL-00001" summary="extract closing price">
       <created>1583591392614</created>
@@ -382,7 +384,14 @@
       <option name="project" value="LOCAL" />
       <updated>1743928481763</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="reflector on restrcontrol.py">
+      <created>1743929096437</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1743929096437</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +416,8 @@
     <MESSAGE value="reflector" />
     <MESSAGE value="fix the restcontrol.py issue" />
     <MESSAGE value="use other lib to improve the number of api calls per day." />
-    <option name="LAST_COMMIT_MESSAGE" value="use other lib to improve the number of api calls per day." />
+    <MESSAGE value="reflector on restrcontrol.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="reflector on restrcontrol.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
