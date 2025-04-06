@@ -97,3 +97,4 @@ if __name__ == '__main__':
     symbol = sys.argv[1]
     result = get_stock_price(symbol)
     logger.info(f"Stock price for {symbol}: {result}" if result else f"Failed to fetch price for {symbol}")
+    sys.exit(0)
