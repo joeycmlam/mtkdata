@@ -5,7 +5,7 @@ import pandas as pd
 API_KEY = "API_KEY"
 
 
-def getTodayPrice(ticker):
+def get_stock_price(ticker):
     try:
         ts = TimeSeries(key=API_KEY, output_format='pandas')
         data, meta_data = ts.get_intraday(symbol=ticker, interval='1min', outputsize='compact')
@@ -23,4 +23,4 @@ def getTodayPrice(ticker):
 
 
 if __name__ == "__main__":
-    getTodayPrice('C')
+    get_stock_price('C')

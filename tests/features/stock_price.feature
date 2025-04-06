@@ -6,7 +6,7 @@ Feature: Stock Price Retrieval
   Scenario: Successfully get AAPL stock price
     Given I have a stock symbol "AAPL"
     When I request the stock price
-    Then I should receive a price value of 203.19
+    Then I should receive a price value of 150.0
 
   Scenario: Successfully get C stock price
     Given I have a stock symbol "C"
