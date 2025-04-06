@@ -3,6 +3,7 @@ import logging
 from datetime import datetime
 from typing import Optional, Dict, Any, Protocol
 from config_reader import ConfigReader
+from logger_config import logger
 
 class StockPriceData:
     """Data class for stock price information."""
@@ -95,4 +96,4 @@ if __name__ == '__main__':
         
     symbol = sys.argv[1]
     result = get_stock_price(symbol)
-    print(result)
+    logger.info(f"Stock price for {symbol}: {result}" if result else f"Failed to fetch price for {symbol}")
