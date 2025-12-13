@@ -114,4 +114,4 @@ class StockPriceResource(Resource):
 if __name__ == '__main__':
     from finnhub_price_service import FinnhubPriceService
     controller = RestControl(price_service=FinnhubPriceService())
-    controller.run()
+    controller.run(port=80)
